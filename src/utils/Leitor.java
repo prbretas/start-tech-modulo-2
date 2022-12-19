@@ -1,16 +1,16 @@
-package notasalunos;
+package utils;
 
 import java.util.Scanner;
 
 public class Leitor {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    String lerString(String mensagem) {
+    public String lerString(String mensagem) {
         System.out.println(mensagem);
         return scanner.nextLine();
     }
 
-    int lerInteiro(String mensagem) {
+    public int lerInteiro(String mensagem) {
         while (true) {
             try {
                 String string = lerString(mensagem);
@@ -21,7 +21,7 @@ public class Leitor {
         }
     }
 
-    double lerDecimal(String mensagem) {
+    public double lerDecimal(String mensagem) {
         while (true) {
             try {
                 String string = lerString(mensagem);
@@ -30,5 +30,16 @@ public class Leitor {
                 System.out.println("Digite um número válido.");
             }
         }
+    }
+
+    public double[] lerVariosDecimais(String mensagem, int quantidade) {
+        double[] numeros = new double[quantidade];
+
+        for(int i = 0; i < quantidade; i ++) {
+            String novaMensagem = String.format("%s (%d de %d) ", mensagem, i+1, quantidade);
+            numeros[i] = lerDecimal(novaMensagem);
+        }
+
+        return numeros;
     }
 }

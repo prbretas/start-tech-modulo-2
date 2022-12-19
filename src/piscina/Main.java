@@ -1,14 +1,17 @@
 package piscina;
 
+import utils.Leitor;
+
 public class Main {
     public static void main(String[] args) {
-        Piscina piscina = new Piscina();
         Leitor leitor = new Leitor();
 
-        piscina.largura = leitor.lerDecimal("Digite a largura: ");
-        piscina.comprimento = leitor.lerDecimal("Digite o comprimento: ");
-        piscina.profundidade = leitor.lerDecimal("Digite a profundidade: ");
+        double largura = leitor.lerDecimal("Digite a largura: ");
+        double comprimento = leitor.lerDecimal("Digite o comprimento: ");
+        double profundidade = leitor.lerDecimal("Digite a profundidade: ");
 
-        System.out.printf("O volume da piscina é %f m³.", piscina.calcularVolume());
+        Piscina piscina = new Piscina(largura, comprimento, profundidade);
+        System.out.println(piscina);
+        System.out.printf("O volume da piscina é %.2f m³.", piscina.calcularVolume());
     }
 }

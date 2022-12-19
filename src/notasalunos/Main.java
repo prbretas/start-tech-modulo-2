@@ -1,22 +1,23 @@
 package notasalunos;
 
+import utils.Leitor;
+
 public class Main {
+    private final static int quantidadeAlunos = 3;
+    private final static int quantidadeNotas = 3;
+
     public static void main(String[] args) {
-        int quantidadeAlunos = 3;
         Aluno[] alunos = new Aluno[quantidadeAlunos];
         Leitor leitor = new Leitor();
 
         for(int i = 0; i < quantidadeAlunos; i++){
-            Aluno aluno = new Aluno();
-            aluno.nome = leitor.lerString("Digite o nome do aluno: ");
-            aluno.notas[0] = leitor.lerDecimal("Digite a nota 1 do aluno: ");
-            aluno.notas[1] = leitor.lerDecimal("Digite a nota 2 do aluno: ");
-            aluno.notas[2] = leitor.lerDecimal("Digite a nota 3 do aluno: ");
-            alunos[i] = aluno;
+            String nome = leitor.lerString("Digite o nome do aluno: ");
+            double[] notas = leitor.lerVariosDecimais("Digite a nota do aluno: ", quantidadeNotas);
+            alunos[i] = new Aluno(nome, notas);
         }
 
         for(Aluno aluno : alunos) {
-            System.out.printf("%s teve a média %f.\n", aluno.nome, aluno.calcularMedia());
+            System.out.printf("%s teve a média %.2f.\n", aluno.getNome(), aluno.calcularMedia());
         }
     }
 }

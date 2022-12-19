@@ -1,12 +1,17 @@
 package grupoalunos;
 
 public class Aluno {
-    String nome;
-    String email;
-    int idade;
+    private String nome;
+    private String email;
+    private int idade;
 
-//    public int envelhecer() {
-//        int anosAMais = 10;
-//        return idade + anosAMais;
-//    }
+    public Aluno(String nome, String email, int idade) {
+        this.nome = nome;
+        this.email = email;
+        this.idade = idade;
+    }
+
+    public String toString() {
+        return String.format("%s(%d): %s", nome, idade, email);
+    }
 }
